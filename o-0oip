@@ -1,0 +1,36 @@
+    // form.append("title", title.value);
+    // form.append("category", category.value);
+    // form.append("brand", brand.value);
+    // form.append("description", description.value);
+    // var file_count = image.files.length;
+
+    // for (var x = 0; x < file_count; x++) {
+    //     f.append("image" + x, image.files[x]);
+    // }
+    // form.append("stock", stock.value);
+
+    // if(empty($name)){
+//     echo ("Please enter product name");
+// }else if(empty($title)){
+//     echo ("Please enter product title");
+// }else if(strlen($title) >= 100){
+//     echo ("Title should have lover than 100 characters");
+// }else if($category == "0"){
+//     echo ("Please select a category");
+// }else if($brand == "0"){
+//     echo ("Please select a brand");
+// }else if(empty($description)){
+//         echo ("Please enter product description");
+// }else if(empty($stock)){
+//     echo ("Please Enter the Quantity.");
+// }else if($qty == "0" | $qty == "e" | $qty < 0){
+//     echo ("Invalid input for Quantity");
+// }else{
+    
+
+    // $d = new DateTime();
+    // $tz = new DateTimeZone("Asia/Colombo");
+    // $d->setTimezone($tz);
+    // $date = $d->format("Y-m-d H:i:s");
+
+    // $status = 1;
