@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+   <?php
+   require "dbconn.php";
+   ?>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assests/css/style.css">
+    <link rel="stylesheet" href="assests/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+  
+    <title>Sandy Coffee</title>
+   
+</head>
+
+<body>
+    <div class="container">
+        <?php
+        include("component/nav.php");
+        ?>
+
+<div class="main col-12">
+
+<div class="hero-section ">
+    <div class="main col-12 w-100 h-100 d-flex justify-content-center ">
+
+<div class="row">
+
+    <?php
+                    $c_rs = Database::search("SELECT * FROM `category`");
+                    $c_num = $c_rs->num_rows;
+
+                    for ($y = 0; $y < $c_num; $y++) {
+                        $cdata = $c_rs->fetch_assoc();
+
+                    ?>
+
+    <div class="col-sm d-flex justify-content-center">
+    
+    <?php
+
+$product_rs = Database::search("SELECT * FROM `product` WHERE `category_id`='" . $cdata["id"] . "'");
+$product_num = $product_rs->num_rows;
+
+for ($z = 0; $z < $product_num; $z++) {
+    $product_data = $product_rs->fetch_assoc();
+
+?>
+
+        <div class="card" style="width: 18rem;">
+
+        <?php
+
+$image_rs = Database::search("SELECT * FROM `image` WHERE `product_id`='" . $product_data["id"] . "'");
+$image_data = $image_rs->fetch_assoc();
+
+?>
+            <img class="card-img-top" src="<?php echo $image_data["code"]; ?>" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $cdata["name"]; ?></h5>
+
+                
+                <h6 class="card-subtitle mb-2 text-muted"><?php echo $product_data["title"]; ?></h6>
+                <p class="card-text">.</p>
+                <a href="#" class="card-link"><?php echo $product_data["price"]; ?></a>
+                <a href="#" class="card-link"><?php echo $product_data["stock"]; ?></a>
+            </div>
+          </div>
+          <?php } ?>
+    </div>
+    
+<?php 
+}
+?>
+
+   
+
+</div>
+    </div>
+</div>
+        
+    
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container justify-content-center gap-2">
+            <?php
+        include("component/nav.php");
+        ?>
+
+                <div class="container">
+                    <div class="row justify-content-space-between gap-2">
+
+                        <?php
+                        $c_rs = Database::search("SELECT * FROM `category`");
+                        $c_num = $c_rs->num_rows;
+    
+                        for ($y = 0; $y < $c_num; $y++) {
+                            $cdata = $c_rs->fetch_assoc();
+    
+                        ?>
+                            <div class="col-sm">
+
+                            <?php
+
+$product_rs = Database::search("SELECT * FROM `product` WHERE `category_id`='" . $cdata["id"] . "'");
+$product_num = $product_rs->num_rows;
+
+for ($z = 0; $z < $product_num; $z++) {
+    $product_data = $product_rs->fetch_assoc();
+
+?>
+                                <div class="card mt-2" style="width: 18rem;">
+
+                                <?php
+
+$image_rs = Database::search("SELECT * FROM `image` WHERE `product_id`='" . $product_data["id"] . "'");
+$image_data = $image_rs->fetch_assoc();
+
+?>
+
+    
+                                    <img class="card-img-top" style="width: 18rem; height: 10rem; align-items: center; object-fit: cover;" src="<?php echo $image_data["code"]; ?>" alt="Card image cap">
+
+
+                                    <div class="card-body">
+
+                                        <h5 class="card-title"><?php echo $cdata["name"]; ?></h5>
+
+                                        <p class="card-text"><?php echo $product_data["title"]; ?></p>
+
+                                        <h5 class="card-title"><?php echo $product_data["price"]; ?></h5>
+
+                                        <h5 class="card-title"></h5>
+
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+<?php }?>
+
+                            </div>
+
+                            <?php }
+?>
+                    </div>
+                </div>
+
+
+        </div>
+
+
+    <script src="assests/js/bootstrap.min.js"></script>
+    <script src="assests/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
+
+
+
+<div class="container" style="margin-top:50px;">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card-sl">
+                    <div class="card-image">
+                        <img
+                            src="https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
+                    </div>
+
+                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+                    <div class="card-heading">
+                        Audi Q8
+                    </div>
+                    <div class="card-text">
+                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
+                    </div>
+                    <div class="card-text">
+                        $67,400
+                    </div>
+                    <a href="#" class="card-button"> Purchase</a>
+                </div>
+            </div>
+        </div>  
+
+        <div class="container" style="margin-top:50px;">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card-sl">
+                    <div class="card-image">
+                        <img
+                            src="https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
+                    </div>
+
+                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+                    <div class="card-heading">
+                        Audi Q8
+                    </div>
+                    <div class="card-text">
+                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
+                    </div>
+                    <div class="card-text">
+                        $67,400
+                    </div>
+                    <a href="#" class="card-button"> Purchase</a>
+                </div>
+            </div>
+        </div>  
+
+   </div> 
+
+</div>
+</div>
+</div>

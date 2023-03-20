@@ -22,7 +22,7 @@
 
     <div class="container">
       <div class="main col-8">
-      <!-- <form method="POST" action="addproduct_process.php" > -->
+
           <div class="row">
             <div class="mb-3 col-lg-4 col-md-12 col-sm-12">
               <label class="form-label">Product Name</label>

@@ -37,3 +37,18 @@ function AddProduct(){
     // alert(stock.value);
 
 }
+
+
+function singleView(id){
+  var r = new XMLHttpRequest();
+
+  r.onreadystatechange = function () {
+      if (r.readyState == 4) {
+          var t = r.responseText;
+          alert(t);
+      }
+  }
+
+  r.open("GET", "singleProductView.php?id=" + id, true);
+  r.send();
+}

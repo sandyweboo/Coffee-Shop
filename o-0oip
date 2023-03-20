@@ -34,3 +34,183 @@
     // $date = $d->format("Y-m-d H:i:s");
 
     // $status = 1;
+
+
+
+
+
+
+
+
+
+
+<?php
+            $c_rs = Database::search("SELECT * FROM `category`  ORDER BY `id` DESC LIMIT 3");
+            $c_num = $c_rs->num_rows;
+
+            for ($y = 0; $y < $c_num; $y++) {
+                $cdata = $c_rs->fetch_assoc();
+
+            ?>
+
+            <div class="cards shadow p-3 mb-5 bg-body rounded"> 
+
+            
+
+                <?php
+
+                $product_rs = Database::search("SELECT * FROM `product` WHERE `category_id`='" . $cdata["id"] . "'");
+                $product_num = $product_rs->num_rows;
+                
+                for ($z = 0; $z < $product_num; $z++) {
+                    $product_data = $product_rs->fetch_assoc();
+                
+                ?>
+
+                <div class="image-body">
+                    <?php
+
+                    $image_rs = Database::search("SELECT * FROM `image` WHERE `product_id`='" . $product_data["id"] . "'");
+                    $image_data = $image_rs->fetch_assoc();
+                    
+                    ?>
+                <img src="<?php echo $image_data["code"]; ?>" class="image" alt="">
+                </div>
+
+                <div class="cat_brand">
+
+                    <div class="category">starbucks</div>
+                    <div class="brand"> <i class="fa-solid fa-copyright"></i> brand</div>
+                </div>
+                <div class="name text"><?php echo $cdata["name"]; ?></div>
+                <div class="title text"><?php echo $product_data["title"]; ?></div>
+                <div class="description text">americano</div>
+
+               
+                <?php } ?>
+            </div>
+
+            <?php } ?>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="main ">
+
+   <div class="row col-12">
+        
+    <?php
+            $c_rs = Database::search("SELECT * FROM `category` ");
+            $c_num = $c_rs->num_rows;
+
+            for ($y = 0; $y < $c_num; $y++) {
+                $cdata = $c_rs->fetch_assoc();
+
+            ?>
+
+<div class="card col-4" style="width: 18rem;">
+
+            
+
+                <?php
+
+                $product_rs = Database::search("SELECT * FROM `product` WHERE `category_id`='" . $cdata["id"] . "'");
+                $product_num = $product_rs->num_rows;
+                
+                for ($z = 0; $z < $product_num; $z++) {
+                    $product_data = $product_rs->fetch_assoc();
+                
+                ?>
+
+                <div class="image-body">
+                    <?php
+
+                    $image_rs = Database::search("SELECT * FROM `image` WHERE `product_id`='" . $product_data["id"] . "'");
+                    $image_data = $image_rs->fetch_assoc();
+                    
+                    ?>
+                <img src="<?php echo $image_data["code"]; ?>" class="image" alt="">
+                </div>
+
+                <div class="cat_brand">
+
+                    <div class="category"><i class="fa-sharp fa-solid fa-tags"></i> starbucks</div>
+                    <div class="brand"> <i class="fa-solid fa-copyright"></i> brand</div>
+                </div>
+                <div class="name text"><?php echo $cdata["name"]; ?></div>
+                <div class="title text"><?php echo $product_data["title"]; ?></div>
+                <div class="description text">americano</div>
+                <div class="Price text">$ <?php echo $product_data["price"]; ?> .00</div>
+                <div class="stock text text-light bg-success"> <?php echo $product_data["stock"]; ?> Stock Available</div>
+                <a href="#" class="btn">View More</a>
+               
+                <?php } ?>
+            </div>
+
+            <?php } ?>
+        </div>
+    
+
+        </div>
+                </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<?php
+   require "dbconn.php";
+
+if (isset($_GET["id"])) {
+
+$pid = $_GET["id"];
+
+echo ($pid);
+
+
+$product_rs = Database::search("SELECT product.id,product.name,product.price,product.description,product.title
+FROM `product` 
+INNER JOIN `image` 
+ON product_id=image.code
+WHERE product.id='" . $pid . "'");
+
+$product_num = $product_rs->num_rows;
+
+if ($product_num == 1) {
+
+    $product_data = $product_rs->fetch_assoc();
+}
+$price = $product_data["price"];
+$name = $product_data["name"];
+$title = $product_data["title"];
+echo ($price );
+echo ($name );
+echo ($title);
+}
+?>
